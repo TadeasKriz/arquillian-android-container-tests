@@ -1,0 +1,12 @@
+h2. Android Container + JBoss AS + WebDriver + JPA
+
+This example covers jpa testing with selenium testing. It is the fusion of 
+
+http://arquillian.org/guides/testing_java_persistence/
+
+and 
+
+http://arquillian.org/guides/functional_testing_using_drone/
+
+This test uses Android container + JBoss AS server where application is deployed 
+and subsequently it is tested from an Android Device via WebDriver.
