@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
+    <parent>
+        <groupId>org.jboss.arquillian.container.android.tests</groupId>
+        <artifactId>android-container-tests-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>android-container-test01</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Arquillian BOM -->
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.0.3.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Arquillian and JUnit -->
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-test-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/arquillian.xml</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
+
+    <profiles>
+        <!-- Multiple containers -->
+        <profile>
+            <id>test01</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <jboss.home>/home/smikloso/devel/servers/jboss-as-7.1.1.Final</jboss.home>
+                
+                <android_1.avd.name>android-managed-1</android_1.avd.name>
+                <android_1.sd.size>128M</android_1.sd.size>
+                <android_1.emulator.bootup.timeout>600</android_1.emulator.bootup.timeout>
+                <android_1.emulator.options>-ports 5556,5557</android_1.emulator.options>
+                <android_1.api.level>16</android_1.api.level>
+                <android_1.abi>armeabi-v7a</android_1.abi>
+
+                <android_2.avd.name>android-managed-1</android_2.avd.name>
+                <android_2.sd.size>128M</android_2.sd.size>
+                <android_2.emulator.bootup.timeout>600</android_2.emulator.bootup.timeout>
+                <android_2.emulator.options>-ports 5560,5561</android_2.emulator.options>
+                <android_2.api.level>16</android_2.api.level>
+                <android_2.abi>armeabi-v7a</android_2.abi>
+            </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.as</groupId>
+                    <artifactId>jboss-as-arquillian-container-managed</artifactId>
+                    <version>7.1.1.Final</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <!-- Android Container Depchain -->
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>android-container-depchain</artifactId>
+                    <type>pom</type>
+                    <scope>test</scope>
+                    <version>0.0.1-SNAPSHOT</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project> 

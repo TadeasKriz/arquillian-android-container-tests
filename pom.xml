@@ -7,14 +7,14 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>9</version>
+        <version>10</version>
     </parent>
 
     <!-- Model Version -->
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Artifact Configuration -->
-    <groupId>net.miklosovic.android.container.tests</groupId>
+    <groupId>org.jboss.arquillian.container.android.tests</groupId>
     <artifactId>android-container-tests-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -41,8 +41,8 @@
 
     <!-- Modules -->
     <modules>
-        <module>android-jboss</module>
-        <!--module>android-single</module-->
+        <!-- module>android-jboss</module-->
+        <module>android-container-test</module>
         <!--module>android-multiple</module-->
         <!--module>android-group</module-->
     </modules>
