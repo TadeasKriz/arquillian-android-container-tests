@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
 public class ContainerTest {
-    
+
     @Deployment(name = "android1", order = 1, managed = true, testable = false)
     @TargetsContainer("android1")
     public static Archive<?> createDeployment1() {
@@ -29,7 +29,7 @@ public class ContainerTest {
         return ShrinkWrap.create(JavaArchive.class, "jbossas1.jar").addClass(HashObjectStore.class)
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
     }
-/*    
+
     @Deployment(name = "android2", order = 2, managed = true, testable = false)
     @TargetsContainer("android2")
     public static Archive<?> createDeployment2() {
@@ -38,6 +38,7 @@ public class ContainerTest {
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
     }
 
+    /*
     @Deployment(name = "jbossas", order = 3, managed = true, testable = false)
     @TargetsContainer("jbossas")
     public static Archive<?> createDeployment3() {
@@ -45,7 +46,7 @@ public class ContainerTest {
         return ShrinkWrap.create(JavaArchive.class, "jbossas.jar").addClass(HashObjectStore.class)
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
     }*/
-    
+
     @Test
     @InSequence(1)
     @OperateOnDeployment("android1")
@@ -55,7 +56,7 @@ public class ContainerTest {
         System.out.println("\t serial number: " + android.getSerialNumber());
         Assert.assertTrue(true);
     }
-/*    
+
     @Test
     @InSequence(2)
     @OperateOnDeployment("android2")
@@ -65,7 +66,8 @@ public class ContainerTest {
         System.out.println("\t serial number: " + android.getSerialNumber());
         Assert.assertTrue(true);
     }
-    
+
+    /*
     @Test
     @InSequence(3)
     @OperateOnDeployment("jbossas")
