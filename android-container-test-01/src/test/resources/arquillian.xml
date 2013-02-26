@@ -9,6 +9,7 @@
             <configuration>
                 <property name="serialId">42583930325742355458</property>
                 <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
+                <property name="forceNewBridge">true</property>
             </configuration>
         </container>
         <container qualifier="android2">
@@ -19,16 +20,7 @@
                 <property name="abi">${android_1.abi}</property>
                 <property name="emulatorBootupTimeoutInSeconds">${android_1.emulator.bootup.timeout}</property>
                 <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
-            </configuration>
-        </container>
-        <!--container qualifier="android2">
-            <configuration>
-                <property name="apiLevel">${android_2.api.level}</property>
-                <property name="avdName">${android_2.avd.name}</property>
-                <property name="sdSize">${android_2.sd.size}</property>
-                <property name="abi">${android_2.abi}</property>
-                <property name="emulatorBootupTimeoutInSeconds">${android_2.emulator.bootup.timeout}</property>
-                <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
+                <property name="forceNewBridge">true</property>
             </configuration>
         </container>
         <container qualifier="jbossas">
@@ -36,6 +28,6 @@
                 <property name="jbossHome">${jboss.home}</property>
                 <property name="adapterImplClass">org.jboss.as.arquillian.container.managed.ManagedDeployableContainer</property>
             </configuration>
-        </container-->
+        </container>        
     </group>
 </arquillian>

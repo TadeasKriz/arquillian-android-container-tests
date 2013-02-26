@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>android-container-test01</artifactId>
+    <artifactId>android-container-test-01</artifactId>
     <packaging>jar</packaging>
 
     <dependencyManagement>
@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>1.0.3.Final</version>
+                <version>${version.arquillian_core}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>${version.junit}</version>
         </dependency>
     </dependencies>
 
@@ -73,28 +73,23 @@
             </activation>
 
             <properties>
-                <jboss.home>/home/smikloso/devel/servers/jboss-as-7.1.1.Final</jboss.home>
+                <jboss.home>/home/smikloso/devel/jboss-as-7.1.1.Final</jboss.home>
                 
-                <android_1.avd.name>android-managed-1</android_1.avd.name>
+                <android_1.avd.name>test01</android_1.avd.name>
                 <android_1.sd.size>128M</android_1.sd.size>
                 <android_1.emulator.bootup.timeout>600</android_1.emulator.bootup.timeout>
                 <android_1.emulator.options>-ports 5556,5557</android_1.emulator.options>
                 <android_1.api.level>16</android_1.api.level>
                 <android_1.abi>armeabi-v7a</android_1.abi>
 
-                <android_2.avd.name>android-managed-1</android_2.avd.name>
-                <android_2.sd.size>128M</android_2.sd.size>
-                <android_2.emulator.bootup.timeout>600</android_2.emulator.bootup.timeout>
-                <android_2.emulator.options>-ports 5560,5561</android_2.emulator.options>
-                <android_2.api.level>16</android_2.api.level>
-                <android_2.abi>armeabi-v7a</android_2.abi>
             </properties>
 
             <dependencies>
+                <!-- JBoss AS container -->
                 <dependency>
                     <groupId>org.jboss.as</groupId>
                     <artifactId>jboss-as-arquillian-container-managed</artifactId>
-                    <version>7.1.1.Final</version>
+                    <version>${version.jbossas}</version>
                     <scope>test</scope>
                 </dependency>
 

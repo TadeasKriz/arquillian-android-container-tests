@@ -38,14 +38,13 @@ public class ContainerTest {
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
     }
 
-    /*
     @Deployment(name = "jbossas", order = 3, managed = true, testable = false)
     @TargetsContainer("jbossas")
     public static Archive<?> createDeployment3() {
         System.out.println("create deployment jbossas");
         return ShrinkWrap.create(JavaArchive.class, "jbossas.jar").addClass(HashObjectStore.class)
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
-    }*/
+    }
 
     @Test
     @InSequence(1)
@@ -67,12 +66,11 @@ public class ContainerTest {
         Assert.assertTrue(true);
     }
 
-    /*
     @Test
     @InSequence(3)
     @OperateOnDeployment("jbossas")
     public void test03() {
         System.out.println("test jbossas");
         Assert.assertTrue(true);
-    }*/
+    }
 }
