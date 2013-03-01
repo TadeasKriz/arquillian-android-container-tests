@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jboss.org/schema/arquillian
+    http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <!-- profile test01 -->
+    <!-- 
+    <group qualifier="containers" default="true">
+        <container qualifier="android1" default="true">
+            <configuration>
+                <property name="consolePort">${android_1.console.port}</property>
+                <property name="avdName">${android_1.avd.name}</property>
+                <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
+            </configuration>
+        </container>
+    </group>
+    -->
+    <!-- profile test02 -->
+
+    <group qualifier="containers" default="true">
+        <container qualifier="android1" default="true">
+            <configuration>
+                <property name="consolePort">${android_1.console.port}</property>
+                <property name="avdName">${android_1.avd.name}</property>
+                <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
+            </configuration>
+        </container>
+    </group>    
+
+</arquillian>

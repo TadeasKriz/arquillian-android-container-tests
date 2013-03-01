@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
+    <parent>
+        <groupId>org.jboss.arquillian.container.android.tests</groupId>
+        <artifactId>android-container-tests-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>android-container-running-instances</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Arquillian BOM -->
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${version.arquillian_core}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Arquillian and JUnit -->
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-test-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/arquillian.xml</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
+
+    <profiles>
+        <!-- Console ports specified, emulators are running -->
+        <profile>
+            <id>test01</id>
+            <properties>
+                <android_1.console.port>5554</android_1.console.port>
+                <android_2.console.port>5556</android_2.console.port>
+                <android_3.console.port>5558</android_3.console.port>
+                <android_3.avd.name>test01</android_3.avd.name>
+            </properties>
+
+            <dependencies>
+                <!-- Android Container Depchain -->
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>android-container-depchain</artifactId>
+                    <type>pom</type>
+                    <scope>test</scope>
+                    <version>0.0.1-SNAPSHOT</version>
+                </dependency>
+            </dependencies>
+        </profile>    
+        <!-- Console port and AVD name specified, emulators are running -->
+        <profile>
+            <id>test02</id>
+            <properties>
+                <android_1.console.port>5554</android_1.console.port>
+                <android_1.avd.name>test01</android_1.avd.name>
+
+                <android_2.console.port>5556</android_2.console.port>
+                <android_2.avd.name>test01</android_2.avd.name>
+            </properties>
+
+            <dependencies>
+                <!-- Android Container Depchain -->
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>android-container-depchain</artifactId>
+                    <type>pom</type>
+                    <scope>test</scope>
+                    <version>0.0.1-SNAPSHOT</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project> 
