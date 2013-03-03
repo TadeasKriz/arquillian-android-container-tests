@@ -73,7 +73,7 @@
             </activation>
 
             <properties>
-                <jboss.home>/home/smikloso/devel/jboss-as-7.1.1.Final</jboss.home>
+                <jboss.home>/home/smikloso/dev/git/jboss-eap-6.0</jboss.home>
                 
                 <android_1.avd.name>test01</android_1.avd.name>
                 <android_1.sd.size>128M</android_1.sd.size>
