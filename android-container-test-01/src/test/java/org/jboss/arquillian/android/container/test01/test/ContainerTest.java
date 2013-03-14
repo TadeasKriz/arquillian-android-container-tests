@@ -25,26 +25,26 @@ public class ContainerTest {
     @Deployment(name = "android1", order = 1, managed = true, testable = false)
     @TargetsContainer("android1")
     public static Archive<?> createDeployment1() {
-        System.out.println("create deployment android1");
-        return ShrinkWrap.create(JavaArchive.class, "jbossas1.jar").addClass(HashObjectStore.class)
-            .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
-    }
-
-    @Deployment(name = "android2", order = 2, managed = true, testable = false)
-    @TargetsContainer("android2")
-    public static Archive<?> createDeployment2() {
         System.out.println("create deployment android2");
-        return ShrinkWrap.create(JavaArchive.class, "jbossas2.jar").addClass(HashObjectStore.class)
+        return ShrinkWrap.create(JavaArchive.class, "android1.jar").addClass(HashObjectStore.class)
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
     }
 
-    @Deployment(name = "jbossas", order = 3, managed = true, testable = false)
+    @Deployment(name = "jbossas", order = 2, managed = true, testable = false)
     @TargetsContainer("jbossas")
-    public static Archive<?> createDeployment3() {
+    public static Archive<?> createDeployment2() {
         System.out.println("create deployment jbossas");
         return ShrinkWrap.create(JavaArchive.class, "jbossas.jar").addClass(HashObjectStore.class)
             .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
     }
+
+//    @Deployment(name = "android2", order = 3, managed = true, testable = false)
+//    @TargetsContainer("android2")
+//    public static Archive<?> createDeployment3() {
+//        System.out.println("create deployment android2");
+//        return ShrinkWrap.create(JavaArchive.class, "android2.jar").addClass(HashObjectStore.class)
+//            .addClass(ObjectStore.class).addClass(Bar.class).addClass(Baz.class);
+//    }
 
     @Test
     @InSequence(1)
@@ -58,19 +58,19 @@ public class ContainerTest {
 
     @Test
     @InSequence(2)
-    @OperateOnDeployment("android2")
-    public void test02(@ArquillianResource AndroidDevice android) {
-        System.out.println("test android2");
-        Assert.assertTrue(android != null);
-        System.out.println("\t serial number: " + android.getSerialNumber());
-        Assert.assertTrue(true);
-    }
-
-    @Test
-    @InSequence(3)
     @OperateOnDeployment("jbossas")
-    public void test03() {
+    public void test02() {
         System.out.println("test jbossas");
         Assert.assertTrue(true);
     }
+
+//    @Test
+//    @InSequence(3)
+//    @OperateOnDeployment("android2")
+//    public void test03(@ArquillianResource AndroidDevice android) {
+//        System.out.println("test android2");
+//        Assert.assertTrue(android != null);
+//        System.out.println("\t serial number: " + android.getSerialNumber());
+//        Assert.assertTrue(true);
+//    }
 }

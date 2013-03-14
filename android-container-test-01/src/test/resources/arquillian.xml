@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<arquillian xmlns="http://jboss.org/schema/arquillian"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://jboss.org/schema/arquillian
     http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
     <group qualifier="containers" default="true">
         <container qualifier="android1" default="true">
             <configuration>
-                <property name="serialId">42583930325742355458</property>
-                <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
+                <property name="avdName">${android_1.avd.name}</property>
                 <property name="forceNewBridge">true</property>
+                <property name="droneHostPort">14444</property>
+                <property name="droneGuestPort">8080</property>
+                <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
             </configuration>
         </container>
+
         <container qualifier="android2">
             <configuration>
-                <property name="apiLevel">${android_1.api.level}</property>
-                <property name="avdName">${android_1.avd.name}</property>
-                <property name="sdSize">${android_1.sd.size}</property>
-                <property name="abi">${android_1.abi}</property>
-                <property name="emulatorBootupTimeoutInSeconds">${android_1.emulator.bootup.timeout}</property>
-                <property name="emulatorOptions">${android_1.emulator.options}</property>
+                <property name="consolePort">${android_2.console.port}</property>
+                <property name="sdCard">/tmp/sdcard.img</property>
                 <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
-                <property name="forceNewBridge">true</property>
+                <property name="generatedAvdPath">/tmp/generated</property>
+                <property name="emulatorBootupTimeoutInSeconds">180</property>
+                <property name="droneHostPort">14445</property>
+                <property name="droneGuestPort">8081</property>
             </configuration>
         </container>
+
         <container qualifier="jbossas">
             <configuration>
                 <property name="jbossHome">${jboss.home}</property>
-                <property name="adapterImplClass">org.jboss.as.arquillian.container.managed.ManagedDeployableContainer</property>
+                <property name="adapterImplClass">org.jboss.as.arquillian.container.remote.RemoteDeployableContainer</property>
             </configuration>
-        </container>        
+        </container>
     </group>
+
+    <extension qualifier="android-drone">
+        <property name="androidServerApk">android-server-2.21.0.apk</property>
+    </extension>
 </arquillian>
