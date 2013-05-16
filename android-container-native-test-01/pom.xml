@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>android-container-test-01</artifactId>
+    <artifactId>android-container-native-test-01</artifactId>
     <packaging>jar</packaging>
 
     <dependencyManagement>
@@ -39,11 +39,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
             <version>${version.junit}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.protocol</groupId>
-            <artifactId>arquillian-protocol-servlet</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -78,18 +73,10 @@
             </activation>
 
             <properties>
-                <jboss.home>/home/smikloso/devel/jboss-as-7.1.1.Final</jboss.home>
                 <android_1.avd.name>android-4.1.2</android_1.avd.name>
             </properties>
 
             <dependencies>
-                <dependency>
-                    <groupId>org.jboss.as</groupId>
-                    <artifactId>jboss-as-arquillian-container-managed</artifactId>
-                    <version>7.1.1.Final</version>
-                    <scope>test</scope>
-                </dependency>
-
                 <dependency>
                     <groupId>org.jboss.arquillian.container</groupId>
                     <artifactId>android-container-depchain</artifactId>
@@ -100,7 +87,8 @@
 
                 <dependency>
                     <groupId>org.jboss.arquillian.extension</groupId>
-                    <artifactId>arquillian-container-android-drone-web</artifactId>
+                    <artifactId>arquillian-container-android-drone-native-depchain</artifactId>
+                    <type>pom</type>
                     <version>0.0.1-SNAPSHOT</version>
                     <scope>test</scope>
                 </dependency>

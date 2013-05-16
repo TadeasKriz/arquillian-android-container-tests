@@ -44,9 +44,10 @@
     <!-- Modules -->
     <modules>
         <!-- module>android-jboss</module-->
-        <module>android-container-test-01</module>
-        <module>android-container-running-instance</module>
-        <module>android-container-running-instances</module>
+        <!--module>android-container-test-01</module-->
+        <module>android-container-native-test-01</module>
+        <!--module>android-container-running-instance</module-->
+        <!--module>android-container-running-instances</module-->
     </modules>
 
 </project>

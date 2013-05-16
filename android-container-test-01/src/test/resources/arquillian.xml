@@ -13,7 +13,7 @@
                 <property name="adapterImplClass">org.jboss.arquillian.container.android.managed.AndroidManagedDeployableContainer</property>
             </configuration>
         </container>
-
+<!--
         <container qualifier="android2">
             <configuration>
                 <property name="consolePort">${android_2.console.port}</property>
@@ -25,11 +25,11 @@
                 <property name="droneGuestPort">8081</property>
             </configuration>
         </container>
-
+-->
         <container qualifier="jbossas">
             <configuration>
                 <property name="jbossHome">${jboss.home}</property>
-                <property name="adapterImplClass">org.jboss.as.arquillian.container.remote.RemoteDeployableContainer</property>
+                <property name="adapterImplClass">org.jboss.as.arquillian.container.managed.ManagedDeployableContainer</property>
             </configuration>
         </container>
     </group>
