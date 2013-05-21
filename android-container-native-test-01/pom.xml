@@ -14,6 +14,11 @@
     <artifactId>android-container-native-test-01</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <version.org.jboss.arquillian.extension.drone>1.2.0.Alpha1</version.org.jboss.arquillian.extension.drone>
+        <version.org.jboss.arquillian.graphene2>2.0.0.Alpha3</version.org.jboss.arquillian.graphene2>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <!-- Arquillian BOM -->
@@ -24,11 +29,30 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-drone-bom</artifactId>
+                <version>${version.org.jboss.arquillian.extension.drone}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+                <version>4.11</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <!-- Arquillian and JUnit -->
+        <dependency>
+            <groupId>org.jboss.arquillian.graphene</groupId>
+            <artifactId>graphene-webdriver</artifactId>
+            <version>${version.org.jboss.arquillian.graphene2}</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
@@ -38,7 +62,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-            <version>${version.junit}</version>
         </dependency>
     </dependencies>
 

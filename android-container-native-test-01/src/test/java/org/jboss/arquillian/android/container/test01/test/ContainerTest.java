@@ -2,7 +2,7 @@ package org.jboss.arquillian.android.container.test01.test;
 
 
 import java.io.File;
-
+import java.net.MalformedURLException;
 import org.jboss.arquillian.container.android.api.AndroidDevice;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.OperateOnDeployment;
@@ -17,11 +17,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.jboss.arquillian.container.test.api.RunAsClient;
+import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.openqa.selenium.WebDriver;
 
 @RunWith(Arquillian.class)
 @RunAsClient
 public class ContainerTest {
-
+    
     @Deployment(name = "android", testable = false)
     @TargetsContainer("android")
     public static Archive<?> createDeployment1() {
@@ -31,7 +33,11 @@ public class ContainerTest {
     @Test
     @InSequence(1)
     @OperateOnDeployment("android")
-    public void test01(@ArquillianResource AndroidDevice android) {
+    public void test01(
+        @ArquillianResource AndroidDevice android,
+        @Drone WebDriver driver) throws MalformedURLException {
+
         Assert.assertTrue(android != null);
+        Assert.assertTrue(driver != null);
     }
 }
