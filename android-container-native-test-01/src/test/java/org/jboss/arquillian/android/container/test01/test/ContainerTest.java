@@ -46,16 +46,14 @@ public class ContainerTest {
 
     @Deployment(name = "android", testable = false)
     @TargetsContainer("android")
-    public static Archive<?> createDeployment1() {
+    public static Archive<?> createDeployment() {
         return ShrinkWrap.createFromZipFile(JavaArchive.class, new File("selendroid-test-app-0.4.apk"));
     }
 
     @Test
     @InSequence(1)
     @OperateOnDeployment("android")
-    public void test01(
-        @ArquillianResource AndroidDevice android,
-        @Drone WebDriver driver) {
+    public void test01(@ArquillianResource AndroidDevice android, @Drone WebDriver driver) {
 
         Assert.assertTrue(android != null);
         Assert.assertTrue(driver != null);
