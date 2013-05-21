@@ -15,8 +15,8 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.org.jboss.arquillian.extension.drone>1.2.0.Alpha1</version.org.jboss.arquillian.extension.drone>
-        <version.org.jboss.arquillian.graphene2>2.0.0.Alpha3</version.org.jboss.arquillian.graphene2>
+        <version.org.jboss.arquillian.extension.drone>1.2.0.Alpha2</version.org.jboss.arquillian.extension.drone>
+        <version.org.jboss.arquillian.graphene2>2.0.0.Alpha4</version.org.jboss.arquillian.graphene2>
     </properties>
 
     <dependencyManagement>
