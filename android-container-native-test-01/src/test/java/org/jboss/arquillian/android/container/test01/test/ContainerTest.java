@@ -2,7 +2,6 @@ package org.jboss.arquillian.android.container.test01.test;
 
 
 import java.io.File;
-import java.net.MalformedURLException;
 import org.jboss.arquillian.container.android.api.AndroidDevice;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.OperateOnDeployment;
@@ -35,7 +34,7 @@ public class ContainerTest {
     @OperateOnDeployment("android")
     public void test01(
         @ArquillianResource AndroidDevice android,
-        @Drone WebDriver driver) throws MalformedURLException {
+        @Drone WebDriver driver) {
 
         Assert.assertTrue(android != null);
         Assert.assertTrue(driver != null);
